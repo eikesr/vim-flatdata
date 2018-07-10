@@ -26,6 +26,7 @@ syn region fdBlockComment matchgroup=fdCommentStart start="/\*" end="\*/" keepen
 syn match fdCommentError display "/\*"me=e-1 contained
 syn match fdCommentEndError display "\*/"
 
+
 hi def link fdLineComment Comment
 hi def link fdBlockComment Comment
 hi def link fdCommentStart Comment
