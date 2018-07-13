@@ -17,6 +17,9 @@ syn keyword fdSyntax struct archive namespace
 syn keyword fdFieldType u8 u16 u32 u64 i8 i16 i32 i64 bool
 syn keyword fdConstType const nextgroup=fdFieldType skipwhite
 
+syn match fdExplicit /@explicit_reference/
+syn match fdBoundImplicitly /@bound_implicitly/
+
 syn match fdInt /-\?\<\d\+\>/
 syn match fdInt /\<0[xX]\x+\>/
 
@@ -36,5 +39,7 @@ hi def link fdSyntax Structure
 hi def link fdConstType Type
 hi def link fdFieldType Type
 hi def link fdInt Number
+hi def link fdExplicit Function
+hi def link fdBoundImplicitly Function
 
 let b:current_syntax = "flatdata"
