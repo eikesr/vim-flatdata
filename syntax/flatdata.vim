@@ -15,6 +15,7 @@ syn cluster fdCommentGroup contains=fdTodo
 
 syn keyword fdSyntax struct archive namespace
 syn keyword fdFieldType u8 u16 u32 u64 i8 i16 i32 i64 bool
+syn keyword fdConstType const nextgroup=fdFieldType skipwhite
 
 syn match fdInt /-\?\<\d\+\>/
 syn match fdInt /\<0[xX]\x+\>/
@@ -32,6 +33,7 @@ hi def link fdCommentError Error
 hi def link fdCommentEndError Error
 hi def link fdTodo Todo
 hi def link fdSyntax Structure
+hi def link fdConstType Type
 hi def link fdFieldType Type
 hi def link fdInt Number
 
