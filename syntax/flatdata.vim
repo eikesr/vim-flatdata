@@ -13,8 +13,9 @@ syn case match
 syn keyword fdTodo contained TODO FIXME XXX
 syn cluster fdCommentGroup contains=fdTodo
 
-syn keyword fdSyntax struct archive namespace
-syn keyword fdFieldType u8 u16 u32 u64 i8 i16 i32 i64 bool
+syn keyword fdStruct struct nextgroup=fdStructName skipwhite
+syn keyword fdSyntax archive namespace
+syn keyword fdFieldType contained u8 u16 u32 u64 i8 i16 i32 i64 bool
 syn keyword fdArchiveType vector multivector raw_data
 syn keyword fdConstType const nextgroup=fdFieldType skipwhite
 
@@ -23,6 +24,9 @@ syn match fdBoundImplicitly /@bound_implicitly/
 
 syn match fdInt /-\?\<\d\+\>/
 syn match fdInt /\<0[xX]\x+\>/
+
+syn match fdStructName /\<\w\+\>/ contained nextgroup=fdStructBlock skipwhite skipnl
+syn region fdStructBlock start="{" end="}" contained contains=fdFieldType,fdInt fold extend
 
 syn region fdLineComment start="//" skip="\\$" end="$" keepend contains=fdCommentGroup
 syn region fdBlockComment matchgroup=fdCommentStart start="/\*" end="\*/" keepend contains=fdCommentGroup,fdCommentError fold extend
@@ -36,6 +40,7 @@ hi def link fdCommentStart Comment
 hi def link fdCommentError Error
 hi def link fdCommentEndError Error
 hi def link fdTodo Todo
+hi def link fdStruct Structure
 hi def link fdSyntax Structure
 hi def link fdConstType Type
 hi def link fdFieldType Type
@@ -43,5 +48,6 @@ hi def link fdArchiveType Type
 hi def link fdInt Number
 hi def link fdExplicit Function
 hi def link fdBoundImplicitly Function
+
 
 let b:current_syntax = "flatdata"
