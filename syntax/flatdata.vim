@@ -20,6 +20,7 @@ syn keyword fdArchiveType contained vector multivector raw_data
 syn keyword fdConstType const nextgroup=fdFieldType skipwhite
 
 syn match fdExplicit contained /@explicit_reference/
+syn match fdOptional contained /@optional/
 syn match fdBoundImplicitly /@bound_implicitly/
 
 syn match fdInt /-\?\<\d\+\>/
@@ -29,7 +30,7 @@ syn match fdStructName /\<\w\+\>/ contained nextgroup=fdStructBlock skipwhite sk
 syn region fdStructBlock start="{" end="}" contained contains=fdFieldType,fdInt,fdLineComment,fdBlockComment fold extend
 
 syn match fdArchiveName /\<\w\+\>/ contained nextgroup=fdArchiveBlock skipwhite skipnl
-syn region fdArchiveBlock start="{" end="}" contained contains=fdArchiveType,fdExplicit,fdLineComment,fdBlockComment fold extend
+syn region fdArchiveBlock start="{" end="}" contained contains=fdArchiveType,fdExplicit,fdOptional,fdLineComment,fdBlockComment fold extend
 
 syn region fdLineComment start="//" skip="\\$" end="$" keepend contains=fdTodo
 syn region fdBlockComment matchgroup=fdCommentStart start="/\*" end="\*/" keepend contains=fdCommentGroup,fdCommentError fold extend
@@ -51,6 +52,7 @@ hi def link fdFieldType Type
 hi def link fdArchiveType Type
 hi def link fdInt Number
 hi def link fdExplicit Function
+hi def link fdOptional Function
 hi def link fdBoundImplicitly Function
 
 
