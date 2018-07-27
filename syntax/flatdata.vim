@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language: flatdata
 " Maintainer: Eike S R
-" Last Change: 20 July 2018
+" Last Change: 27 July 2018
 
 if exists("b:current_syntax")
   finish
@@ -33,7 +33,7 @@ syn match fdArchiveName /\<\w\+\>/ contained nextgroup=fdArchiveBlock skipwhite 
 syn region fdArchiveBlock start="{" end="}" contained contains=fdArchiveType,fdExplicit,fdOptional,fdLineComment,fdBlockComment fold extend
 
 syn region fdLineComment start="//" skip="\\$" end="$" keepend contains=fdTodo
-syn region fdBlockComment matchgroup=fdCommentStart start="/\*" end="\*/" keepend contains=fdCommentGroup,fdCommentError fold extend
+syn region fdBlockComment matchgroup=fdCommentStart start="/\*" end="\*/" keepend contains=fdTodo,fdCommentError fold extend
 syn match fdCommentError display "/\*"me=e-1 contained
 syn match fdCommentEndError display "\*/"
 
